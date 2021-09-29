@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="crm_check_list_view_tree" model="ir.ui.view">
+        <field name="name">crm.check.list.tree</field>
+        <field name="model">crm.check.list</field>
+        <field name="inherit_id" ref="crm_checklist.crm_check_list_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="editable">bottom</attribute>
+            </xpath>
+
+            <field name="name" position="after">
+                <field name="description"/>
+                <field name="days_to_complete"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

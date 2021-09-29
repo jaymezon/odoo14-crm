@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_crm_lead_task_wizard" model="ir.ui.view">
+        <field name="name">crm.lead.task.wizard.form</field>
+        <field name="model">crm.lead.task.wizard</field>
+        <field name="inherit_id" ref="crm_opportunity_task.view_crm_lead_task_wizard"/>
+        <field name="arch" type="xml">
+            <field name="project_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!--    <record id="crm_iap_opportunity_kanban_inehrit" model="ir.ui.view">-->
+<!--        <field name="name">crm.opportunity.inherited.kanban.inehrit</field>-->
+<!--        <field name="model">crm.lead</field>-->
+<!--        <field name="inherit_id" ref="crm.crm_case_kanban_view_leads"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//field[@name='tag_ids']" position="before">-->
+<!--                <field name="country_id"/>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+    <record id="crm_phone_opportunity_kanban_inehrit" model="ir.ui.view">
+        <field name="name">crm.opportunity.inherited.kanban.inehrit</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_kanban_view_leads"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('o_kanban_record_subtitle')]/t/field[@name='expected_revenue']"
+                   position="before">
+                <field name="target_volume" string='Target Volume'/>
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="before">
+                <field name="target_volume"/>
+            </xpath>
+        </field>
+    </record>
+<!--    <record id="crm_lead_kanban_lead_inherit_kanban" model="ir.ui.view">-->
+<!--        <field name="name">crm.lead.inherit.kanban</field>-->
+<!--        <field name="model">crm.lead</field>-->
+<!--        <field name="inherit_id" ref="crm.quick_create_opportunity_form"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//field[@name='phone']" position="after">-->
+<!--                &lt;!&ndash;        <kanban default_group_by="stage_id" class="o_kanban_small_column o_opportunity_kanban" on_create="quick_create" quick_create_view="crm.quick_create_opportunity_form" archivable="false" sample="1">-->
+<!--                &ndash;&gt;-->
+<!--                <field name="target_volume" string='Target Volume'/>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+    <record id="crm_stage_inherit_form" model="ir.ui.view">
+        <field name="name">crm.stage.inherit.form</field>
+        <field name="model">crm.stage</field>
+        <field name="inherit_id" ref="crm.crm_stage_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='team_id']" position="after">
+                <!--                <attribute name="required">1</attribute>-->
+                <field name="channels" string='Channels'/>
+            </xpath>
+        </field>
+    </record>
+    <record id="mail_activity_view_form_popup_inherit_form" model="ir.ui.view">
+        <field name="name">mail.activity.view.form.popup.inherit.form</field>
+        <field name="model">mail.activity</field>
+        <field name="inherit_id" ref="mail.mail_activity_view_form_popup"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='note']" position="attributes">
+                <attribute name="required">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!--    <record id="crm_lead2opportunity_partner_inherit_form" model="ir.ui.view">-->
+    <!--        <field name="name">crm.lead2opportunity.partner.inherit.form</field>-->
+    <!--        <field name="model">crm.lead2opportunity.partner</field>-->
+    <!--        <field name="inherit_id" ref="crm.view_crm_lead2opportunity_partner"/>-->
+    <!--        <field name="arch" type="xml">-->
+    <!--&lt;!&ndash;            <xpath expr="//field[@name='action']" position="attributes">&ndash;&gt;-->
+    <!--&lt;!&ndash;                <attribute name="invisible">1</attribute>&ndash;&gt;-->
+    <!--&lt;!&ndash;                &lt;!&ndash;                <attribute name="attrs">{'required': [('stage_id.name', '=', 'New')]}</attribute>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;            </xpath>&ndash;&gt;-->
+    <!--&lt;!&ndash;             <xpath expr="//field[@name='action']" position="attributes">&ndash;&gt;-->
+    <!--&lt;!&ndash;                  <attribute name="{'invisible':[('action','=','create')]}">1</attribute>&ndash;&gt;-->
+    <!--&lt;!&ndash;             </xpath>&ndash;&gt;-->
+    <!--              <field name="action"  position="replace">-->
+    <!--                  <field name="create" widget="radio" attrs="{'invisible':[('name','=','convert')]}"/>-->
+    <!--              </field>-->
+
+    <!--            &lt;!&ndash;            <xpath expr="//field[@name='partner_id']" position="attributes">&ndash;&gt;-->
+    <!--            &lt;!&ndash;                <attribute name="required">1</attribute>&ndash;&gt;-->
+    <!--            &lt;!&ndash;            </xpath>&ndash;&gt;-->
+    <!--            &lt;!&ndash;            <xpath expr="//field[@name='partner_id']" position="after">&ndash;&gt;-->
+    <!--            &lt;!&ndash;                <field name="mobile" required="1"/>&ndash;&gt;-->
+    <!--            &lt;!&ndash;                <field name="date_deadline" required="1"/>&ndash;&gt;-->
+    <!--            &lt;!&ndash;                <field name="user_id" required="1"/>&ndash;&gt;-->
+    <!--            &lt;!&ndash;                <field name="team_id" required="1"/>&ndash;&gt;-->
+    <!--            &lt;!&ndash;            </xpath>&ndash;&gt;-->
+    <!--            &lt;!&ndash;            <xpath expr="//field[@name='planned_revenue']" position="attributes">&ndash;&gt;-->
+    <!--            &lt;!&ndash;                <attribute name="invisible">1</attribute>&ndash;&gt;-->
+    <!--            &lt;!&ndash;            </xpath>&ndash;&gt;-->
+    <!--        </field>-->
+    <!--    </record>-->
+
+    <!--  Crm Classifications form -->
+    <record id="crm_classifications_lead_view_form_inherited" model="ir.ui.view">
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='source_id']" position="attributes">
+                <attribute name="required">1</attribute>
+            </xpath>
+            <field name="team_id" position="after">
+                <field name="channels" string='Channels'/>
+                <field name="gender" string='Gender'/>
+                <field name="gps_location" string='GPS Location'/>
+                <field name="classifications" string='Tones Classification'/>
+                <field name="regions" string='Regions'/>
+                <field name="east_territory" attrs="{'invisible': [('regions', '!=', 'east_territory')]}"/>
+                <field name="west_territory" attrs="{'invisible': [('regions', '!=', 'west_territory')]}"/>
+                <field name="east_subterritory_embu_tharaka"
+                       attrs="{'invisible': [('east_territory', '!=', 'east_subterritory_embu_tharaka')]}"/>
+                <field name="east_subterritory_kiambu_muranga"
+                       attrs="{'invisible': [('east_territory', '!=', 'east_subterritory_kiambu_muranga')]}"/>
+                <field name="east_subterritory_kilifi_malindi"
+                       attrs="{'invisible': [('east_territory', '!=', 'east_subterritory_kilifi_malindi')]}"/>
+                <field name="east_subterritory_kirinyagab_muranga"
+                       attrs="{'invisible': [('east_territory', '!=', 'east_subterritory_kirinyagab_muranga')]}"/>
+                <field name="east_subterritory_machakos"
+                       attrs="{'invisible': [('east_territory', '!=', 'east_subterritory_machakos')]}"/>
+                <field name="east_subterritory_nyeri"
+                       attrs="{'invisible': [('east_territory', '!=', 'east_subterritory_nyeri')]}"/>
+                <field name="east_subterritory_oloitoktok_emali"
+                       attrs="{'invisible': [('east_territory', '!=', 'east_subterritory_oloitoktok_emali')]}"/>
+                <field name="east_subterritory_laikipia"
+                       attrs="{'invisible': [('east_territory', '!=', 'east_subterritory_laikipia')]}"/>
+                <field name="east_subterritory_tala_kangundo_isinya"
+                       attrs="{'invisible': [('east_territory', '!=', 'east_subterritory_tala_kangundo_isinya')]}"/>
+                <field name="east_subterritory_timau_meru_isiolo"
+                       attrs="{'invisible': [('east_territory', '!=', 'east_subterritory_timau_meru_isiolo')]}"/>
+                <field name="west_subterritory_bomet_sotik_litein"
+                       attrs="{'invisible': [('west_territory', '!=', 'west_subterritory_bomet_sotik_litein')]}"/>
+                <field name="west_subterritory_eldama_ravine_londiani_burnt_forest"
+                       attrs="{'invisible': [('west_territory', '!=', 'west_subterritory_eldama_ravine_londiani_burnt_forest')]}"/>
+                <field name="west_subterritory_eldoret_turbo"
+                       attrs="{'invisible': [('west_territory', '!=', 'west_subterritory_eldoret_turbo')]}"/>
+                <field name="west_subterritory_kakamega_kapsabet_vihiga"
+                       attrs="{'invisible': [('west_territory', '!=', 'west_subterritory_kakamega_kapsabet_vihiga')]}"/>
+                <field name="west_subterritory_kericho_nandi_ahero"
+                       attrs="{'invisible': [('west_territory', '!=', 'west_subterritory_kericho_nandi_ahero')]}"/>
+                <field name="west_subterritory_kisii_nyamira"
+                       attrs="{'invisible': [('west_territory', '!=', 'west_subterritory_kisii_nyamira')]}"/>
+                <field name="west_subterritory_kitale_bungoma"
+                       attrs="{'invisible': [('west_territory', '!=', 'west_subterritory_kitale_bungoma')]}"/>
+                <field name="west_subterritory_molo_njoro"
+                       attrs="{'invisible': [('west_territory', '!=', 'west_subterritory_molo_njoro')]}"/>
+                <field name="west_subterritory_naivasha_gilgil"
+                       attrs="{'invisible': [('west_territory', '!=', 'west_subterritory_naivasha_gilgil')]}"/>
+                <field name="west_subterritory_nyandarua"
+                       attrs="{'invisible': [('west_territory', '!=', 'west_subterritory_nyandarua')]}"/>
+                <field name="target_volume" string='Target Volume'/>
+            </field>
+        </field>
+    </record>
+
+</odoo>
